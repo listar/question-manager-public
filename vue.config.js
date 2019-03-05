@@ -10,6 +10,9 @@ function resolve (dir) {
     return path.join(__dirname, dir)
 }
 
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const productionGzipExtensions = ['js', 'css'];
+
 // vue.config.js
 module.exports = {
     /*
@@ -40,6 +43,14 @@ module.exports = {
             // .set('@views', resolve('src/views'))
             // .set('@layout', resolve('src/layout'))
             // .set('@static', resolve('src/static'))
+
+
+      config
+        .plugin('html')
+        .tap(args => {
+          args[0].template = resolve('src/template/index.html')
+          return args
+        })
 
 
         // const svgRule = config.module.rule('svg');
@@ -90,9 +101,21 @@ module.exports = {
             new CKEditorWebpackPlugin( {
                 // See https://ckeditor.com/docs/ckeditor5/latest/features/ui-language.html
                 language: 'en'
-            } )
-        ]
+            }),
+          new CompressionWebpackPlugin({
+            algorithm: 'gzip',
+            test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+            threshold: 10240,
+            minRatio: 0.8
+          })
+        ],
+      externals: {
+        'vue': 'Vue',
+        // 'vuex': 'Vuex',
+        // 'vue-router': 'VueRouter',
+      },
     },
+
 
     lintOnSave: false
 }

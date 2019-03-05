@@ -1,12 +1,11 @@
 import App from '../App'
-
 import { RouteView,  PageView, BaseView} from '../components/layouts'
 
 export default [{
     path: '/',
     name: 'index',
     component: BaseView,
-    redirect: '/index',
+    redirect: '/login',
     children: [
         {
             path: '/test',

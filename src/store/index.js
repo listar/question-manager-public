@@ -1,16 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+
 import user from './modules/user'
 import paper from './modules/paper'
-
 import mutations from './mutations'
 import actions from './action'
 import getters from './getters'
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
-
+Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
-
 
 var UA = window.navigator.userAgent;
 var OS = {
@@ -31,6 +29,8 @@ const state = {
   isLogin: false,//是否登录
   userSendAnswerData: {}, // 用户提交的答案
 }
+
+
 
 
 let _vuex = new Vuex.Store({

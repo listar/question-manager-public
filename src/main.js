@@ -16,6 +16,8 @@ Vue.use(VueRouter);
 Vue.use(AntDesign);
 Vue.use(CKEditor);
 
+// sync(Vuex, VueRouter); del
+
 Vue.config.productionTip = false;
 
 const router = new VueRouter({
