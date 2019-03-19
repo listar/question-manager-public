@@ -149,6 +149,16 @@ export default [{
       // component: () => import('@/page/Login'),
       meta: {title: '登录页'}
     },
+  {
+    path: '/register',
+    name: 'Register',
+    component: r => require.ensure([], () => r(require('@/page/Register')), 'Register'),
+    // component: () => import('@/page/Login'),
+    meta: {title: '注册页'}
+  },
+
+
+  //register
 
     //未匹配到的路由
     {

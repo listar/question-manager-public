@@ -57,8 +57,26 @@
         <a-layout :style="{ marginLeft: '200px' }">
             <a-layout-header :style="{ background: '#fff', padding: 0 }" >
                 <div class="head-user-info-layer">
-                    <a-avatar :src="userInfo.headimg" />
-                    <span class="nickname">{{userInfo.userName}}</span>
+
+                    <a-dropdown>
+                        <a class="ant-dropdown-link" href="#">
+                            <a-avatar :src="userInfo.headimg" />
+                            <span class="nickname">{{userInfo.userName}}</span>
+                        </a>
+                        <a-menu slot="overlay">
+                            <a-menu-item>
+                                <a href="javascript:;">修改密码</a>
+                            </a-menu-item>
+                            <a-menu-item>
+                                <a href="javascript:;">个人设置</a>
+                            </a-menu-item>
+                            <a-menu-item>
+                                <a @click="cancelLogin">注销</a>
+                            </a-menu-item>
+                        </a-menu>
+                    </a-dropdown>
+
+
                 </div>
             </a-layout-header>
             <a-layout-content :style="{ margin: '24px 16px 0', overflow: 'initial' }">
@@ -96,13 +114,12 @@
   import {  mapState, mapMutations } from 'vuex'
   import { CookieUtil } from '@/utils/common'
   import {userlocalLoginApi} from  '@/api/user'
-  import {USERLOCALLOGIN} from '@/store/mutation-types'
+  import {USERLOCALLOGIN, USERCANCELLOGIN} from '@/store/mutation-types'
 
     export default {
       name: 'BaseView',
       mounted(){
           if(!this.token && !this.isLogin) {
-
             // 获取本地token
             let cookieToken = CookieUtil.get('TOKEN');
             if (cookieToken) {
@@ -113,18 +130,21 @@
                   this.$router.push({path: '/login'});
                   return;
                 }
-                this.USERLOCALLOGIN(res.data.data);
+                this.USERLOCALLOGIN(res.data.data, cookieToken);
               });
+            }else{
+              this.$router.push({path: '/login'});
             }
           }
       },
       methods:{
-
-
-
-
+        cancelLogin(){
+          this.USERCANCELLOGIN();
+          this.$message.success('成功注销！');
+          this.$router.push({path: '/login'});
+        },
         ...mapMutations([
-          USERLOCALLOGIN
+          USERLOCALLOGIN, USERCANCELLOGIN
         ])
       },
         computed: {

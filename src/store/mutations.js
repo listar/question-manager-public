@@ -2,7 +2,8 @@ import {
 
   LOGIN_ACCOUNT,
   ADDUSERANSWERDATA,
-  USERLOCALLOGIN
+  USERLOCALLOGIN,
+  USERCANCELLOGIN
 } from './mutation-types.js'
 
 import {
@@ -23,10 +24,11 @@ export default {
   },
 
 
-  [USERLOCALLOGIN](state, userInfo){
+  [USERLOCALLOGIN](state, userInfo, token){
     if(userInfo){
       state.isLogin = true;
       state.userInfo = userInfo;
+      state.token = token;
     }
   },
 
@@ -47,5 +49,18 @@ export default {
       state.userInfo = userData;
     }
   },
+
+  /**
+   * 注销登录
+   * @param state
+   */
+  [USERCANCELLOGIN](state){
+    state.isLogin = false;
+    state.token = '';
+    state.userInfo = [];
+    CookieUtil.unset('TOKEN');
+  }
+
+
 
 }

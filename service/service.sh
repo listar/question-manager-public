@@ -1,1 +1,1 @@
-nohup node app.js &
+nohup node app.js -question-manage

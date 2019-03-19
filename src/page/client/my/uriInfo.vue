@@ -17,7 +17,7 @@
                         </a-col>
                         <a-col :span="8">
                             <a-card title="排名">
-                                <p>card content</p>
+                                <p>not data</p>
                             </a-card>
                         </a-col>
                     </a-row>
@@ -28,7 +28,12 @@
                     <div class="paper-small" v-html="paperInfo.description"></div>
                 </div>
                 <div class="question-list">
-                    <div :class="{item: true, notAnswer: notAnswerData.indexOf(item.id) > -1 ? 1 : 0 }" v-for="(item,qIndex) in questionList" :key="qIndex">
+                    <div :class="{item: item.qcId != 7, notAnswer: false }" v-for="(item,qIndex) in questionList" :key="qIndex">
+                        <!--段落说明-->
+                        <section v-if="[7].indexOf(item.qcId) > -1" class="section-tips" v-html="item.contentJson[0]"></section>
+
+
+                        <div v-else>
                         <div class="title">
                             <span class="isBida" v-if="item.isBida">*</span>
                             <span class="title-txt" v-html="item.title"></span>
@@ -36,13 +41,13 @@
                         </div>
                         <div class="question-tips" v-html="item.tips"></div>
 
-                        <div class="answer-list">
-                            <div v-if="[1,2].indexOf(item.qcId) > -1" v-for="(answers,index) in item.contentJson" :key="index" class="answer-item">
+                        <div class="answer-list" v-if="[1,2].indexOf(item.qcId) > -1">
+                            <div v-for="(answers,index) in item.contentJson" :key="index" class="answer-item">
                                 <div>{{answers.name}}</div>
                             </div>
                         </div>
 
-                        <div class="user-answer">
+                        <div class="user-answer" v-if="[1,2, 3].indexOf(item.qcId) > -1">
                             <div class="index-txt">您的回答：</div>
                             <div v-if="[1,3].indexOf(item.qcId) > -1" class="my-answer">
                                 {{item.quserAnswerData}}
@@ -57,6 +62,19 @@
                                 <a-divider type="vertical" />
                                 <a-icon type="check" />(得分：{{item.score}})
                             </div>
+                        </div>
+
+                        <div v-if="[4,6].indexOf(item.qcId) > -1" class="item-info">
+                            <table  cellpadding="10px">
+                                <tr v-for="(answers,index) in item.contentJson">
+                                    <td class="trLeft">{{answers.name}}</td>
+                                    <td>
+                                        <div v-if="[4].indexOf(item.qcId) > -1" >{{item.quserAnswerData[index]}}</div>
+                                        <a-rate v-if="[6].indexOf(item.qcId) > -1" disabled allowHalf :value="item.quserAnswerData[index]" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
                         </div>
 
                     </div>
@@ -74,6 +92,7 @@
   import {infoPaperApi} from "@/api/question";
   import {submitPaperApi} from "@/api/user";
   import {mapState} from 'vuex';
+  import {getStore} from '@/utils/common'
 
 
   export default {
@@ -95,7 +114,8 @@
       }
     },
     mounted(){
-      this.currentUserAnswerData = this.userSendAnswerData[this.uri];
+      this.currentUserAnswerData = JSON.parse(getStore("USERANSWER"+ this.uri));
+      console.log(this.currentUserAnswerData);
       if(typeof this.currentUserAnswerData == "undefined" || typeof this.currentUserAnswerData['answerJson'] == undefined){
         this.$router.push({path: '/mobile/'+ this.uri});
         return;
@@ -207,6 +227,8 @@
             return _answerList
             break;
           case 3:
+          case 4:
+          case 6:
             return currentQuestionAnswerIndexData;
             break;
         }
@@ -295,6 +317,10 @@
                     }
                 }
                 .question-list{
+                    .section-tips{
+                        font-size: 15px;
+                        color: #666666;
+                    }
                     .item{
                         margin-bottom:30px;
                         border:2px solid #FFF;
@@ -309,6 +335,11 @@
                             border-bottom: 1px solid #EFEFEF;
                             font-size: 15px;
                             color: #333333;
+                        }
+                        .trLeft{
+                            padding-right: 20px;
+                            text-align: right;
+                            font-size: 15px;
                         }
                         .user-answer{
                             border-top:1px solid red;
@@ -327,6 +358,9 @@
                             .my-score{
                                 color: #0066FF;
                             }
+                        }
+                        .item-info{
+                            border-bottom: 1px solid #EFEFEF;
                         }
                     }
                     .title{

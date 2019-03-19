@@ -3,7 +3,7 @@
         <div class="container">
             <div class="top">
                 <div class="header">
-                    <span class="title">登录</span>
+                    <span class="title">注册账号</span>
                 </div>
                 <div class="desc">
                     Ant Design 风格的问卷系统
@@ -37,23 +37,27 @@
                         </a-input>
                     </a-form-item>
                     <a-form-item>
-                        <a-checkbox
+                        <a-input
                                 v-decorator="[
-          'remember',
-          {
-            valuePropName: 'checked',
-            initialValue: true,
-          }
+          'password_1',
+          { rules: [{ required: true, message: '请输入密码!' }] }
         ]"
+                                type='password'
+                                placeholder='再次输入密码'
                         >
-                            记住我
-                        </a-checkbox>
-                        <a class='login-form-forgot' href='#'>忘记密码</a>
-                        <a-button type='primary' htmlType='submit' class='login-form-button'>
+                            <a-icon slot="prefix" type='lock' style="color: rgba(0,0,0,.25)"/>
+                        </a-input>
+                    </a-form-item>
+                    <a-form-item>
+                        <a-button type='primary' htmlType='submit' class='login-form-button' @click="registerBtn">
+                            注册
+                        </a-button>
+                    </a-form-item>
+                    <a-form-item>
+                        <router-link :to="{path: '/login'}">
+                        <a-button type='primary' class='login-form-button'>
                             登录
                         </a-button>
-                        <router-link :to="{path: '/register'}">
-                        注册账号！
                         </router-link>
                     </a-form-item>
                 </a-form>
@@ -75,57 +79,62 @@
 </template>
 
 <script>
-    import {loginApi} from '@/api/user';
-    import { mapGetters, mapState } from 'vuex'
+  import {registerUserApi} from '@/api/user';
+  import { mapGetters, mapState } from 'vuex'
 
-    export default {
-        name: 'UserLogin',
-        data() {
-            return {
-                device: ''
-            }
-        },
-        mounted() {
-            document.body.classList.add('userLayout');
-            console.log(this.currentUser);
-        },
-        beforeDestroy() {
-            document.body.classList.remove('userLayout')
-        },
-        beforeCreate () {
-            this.form = this.$form.createForm(this);
-        },
-        methods: {
-            handleSubmit (e) {
-                e.preventDefault();
-                this.form.validateFields((err, values) => {
-                    if (!err) {
-                        let paramData = {
-                            userName: values.userName,
-                            userPw: values.password
-                        };
-                        console.log('post: ', paramData);
-
-                      this.$store.dispatch('getUserInfo', paramData).then( (res) => {
-                        if(!this.currentUser.isLogin){
-                          this.$message.error(this.currentUser.userInfo);
-                          return;
-                        }
-                        this.$router.push({path: '/test/page2'});
-                      });
-                    }
-                });
-            },
-        },
-      computed: {
-        ...mapState([
-          'userInfo', 'token'
-        ]),
-        ...mapGetters([
-          'currentUser',
-        ])
+  export default {
+    name: 'register',
+    data() {
+      return {
+        device: ''
       }
+    },
+    mounted() {
+      document.body.classList.add('userLayout');
+      console.log(this.currentUser);
+    },
+    beforeDestroy() {
+      document.body.classList.remove('userLayout')
+    },
+    beforeCreate () {
+      this.form = this.$form.createForm(this);
+    },
+    methods: {
+      registerBtn (e) {
+        e.preventDefault();
+        this.form.validateFields((err, values) => {
+          if(err){
+            return;
+          }
+          if(values.password !== values.password_1){
+            this.$message.error('2个密码不一致！');
+            return;
+          }
+            let paramData = {
+              userName: values.userName,
+              userPw: values.password
+            };
+
+          registerUserApi(paramData).then((res) => {
+            if(res.data.errcode){
+              this.$message.error(res.data.data);
+              return;
+            }
+            this.$message.error('注册成功！');
+            this.$router.push({path: '/login'});
+          });
+        });
+      },
+    },
+    computed: {
+      ...mapState([
+        'userInfo', 'token'
+      ]),
+      ...mapGetters([
+        'currentUser',
+      ])
     }
+  }
 </script>
 
 <style lang="scss" scoped>

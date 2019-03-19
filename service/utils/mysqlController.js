@@ -58,7 +58,13 @@ function whereData(sql, whereData) {
   if(Object.keys(whereData).length){
     let _whereData = [];
     for(let _key in whereData){
+      if(['token'].indexOf(_key) > -1){
+        continue;
+      }
       _whereData.push("`"+_key+"` = "+mysql.escape(whereData[_key])+" " );
+    }
+    if(!_whereData.length){
+      return sql;
     }
     return sql + " where " + _whereData.join(" and ");
   }
@@ -80,6 +86,28 @@ function login(param, callback) {
         }
         callback(queryData);
     });
+}
+
+/**
+ * 查询用户表
+ * @param param
+ * @param callback
+ */
+exports.selectUser = (param, callback) => {
+  let sql = "SELECT * FROM `question`.`q_user` ";
+  if(typeof param.fields != "undefined"){
+    sql = selectFields(sql, param.fields);
+    delete param.fields;
+  }
+  sql = whereData(sql, param);
+  console.log('selectUser_sql:' + sql);
+  query(sql, (err, queryData, fields) => {
+    if(err){
+      callback([]);
+      throw err;
+    }
+    callback(queryData);
+  });
 }
 
 /**
@@ -109,49 +137,6 @@ function testinsert(param, callback) {
     });
 }
 
-
-//添加问卷
-function addquestion(param, callback) {
-    let nowTime = parseInt(new Date().getTime()/ 1000);
-    //添加问卷属性
-    param.questionList = JSON.parse(param.questionList);
-    let sqlAttr = "INSERT INTO `question`.`q_question_attr`(`uri`, `title`, `description`, `startTime`, `endTime`, `contentNum`, `contentScore`, `view`, `isRandom`, `type`, `time`) VALUES ('%s', '%s', '%s', %s, %s, %s, %s, %s, %s, %s, %s);";
-    sqlAttr = vsprintf(sqlAttr, [common.createRandomStr(20), param.title, param.description, param.startTime, param.endTime, param.questionList.length, 100, 0, 0, param.type, nowTime]);
-    console.log('sql:' + sqlAttr);
-    const promise = new Promise(function(resolve, reject) {
-        query(sqlAttr, (err, queryData, fields) => {
-            if(err){
-                throw err;
-            }
-            let _insertId = queryData.insertId;
-            console.log(queryData);
-            if (_insertId){
-                resolve(_insertId);
-            } else {
-                reject(err);
-            }
-        });
-    });
-
-    promise.then((_insertId) => {
-        //INSERT INTO `question`.`q_question`(`id`, `qqaId`, `qcId`, `qcName`, `title`, `content`, `contentAnswer`, `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (2, 8, 1, '单选', '《出师表》中，“先帝創業未半，而中道崩殂“中的”先帝“是指刘备。', '[{\"name\":\"对\",\"isAnswer\":1},{\"name\":\"错\",\"isAnswer\":0}]', NULL, 5, 1, NULL, NULL, NULL, 8);
-        //批量添加问题
-        let sql = 'INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES ';
-        let insertData = [];
-        param.questionList.map((item, i) => {
-            insertData.push([vsprintf('(%s, %s, "%s", "%s", \'%s\', "%s", %s, "%s", "%s", "%s", %s)', [_insertId, item.qcId, item.qcName, item.title, JSON.stringify(item.answerJson), item.score, item.status, item.isBida, item.tips, item.answerAnalysis, nowTime])]);
-        });
-        sql = sql+ insertData.join(",");
-        console.log('sql:' + sql);
-        query(sql, (err, queryData, fields) => {
-            if(err){
-                throw err;
-            }
-            callback(queryData);
-        });
-    });
-}
-
 /**
  * 添加问题
  * @param param  object
@@ -162,7 +147,7 @@ exports.insertQuestion = function (param, callback) {
     let sql = 'INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES ';
     let insertData = [];
     param.questionList.map((item, i) => {
-        insertData.push([vsprintf('(%s, %s, "%s", "%s", \'%s\', "%s", %s, "%s", %s, %s, %s)', [param.id, item.qcId, item.qcName, item.title, JSON.stringify(item.answerJson), item.score, item.status, item.isBida, mysql.escape(item.tips), mysql.escape(item.answerAnalysis), nowTime])]);
+        insertData.push([vsprintf('(%s, %s, "%s", %s, %s, "%s", %s, "%s", %s, %s, %s)', [param.id, item.qcId, item.qcName, mysql.escape(item.title), mysql.escape(JSON.stringify(item.answerJson)), item.score, item.status, item.isBida, mysql.escape(item.tips), mysql.escape(item.answerAnalysis), nowTime])]);
     });
     sql = sql+ insertData.join(",");
     console.log('sql:' + sql);
@@ -173,6 +158,31 @@ exports.insertQuestion = function (param, callback) {
         // console.log(queryData);
         callback(queryData.affectedRows > 0);
     });
+}
+
+
+/**
+ * 添加试卷
+ * @param param
+ * @param callback
+ */
+exports.addPaper = function(param, callback) {
+  let sql = "INSERT INTO  `question`.`q_question_attr` (%s) VALUES (%s);";
+  let setData = [];
+  let valuesData = [];
+  for(let item in param){
+    setData.push("`"+item+"` ");
+    valuesData.push(mysql.escape(param[item]));
+  }
+  sql = vsprintf(sql, [setData.join(","), valuesData.join(",")]);
+  console.log('sql:' + sql);
+  query(sql, (err, queryData, fields) => {
+    if(err){
+      callback(false);
+      throw err;
+    }
+    callback(queryData.insertId);
+  });
 }
 
 /**
@@ -224,8 +234,8 @@ function listPaper(param, callback) {
     if(typeof param.pageNum != "undefined"){
         _pageNum = param.pageNum;
     }
-    let sql = "SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  %s,%s";
-    sql = vsprintf(sql, [(param.pageIndex - 1) * _pageNum, _pageNum]);
+    let sql = "SELECT * FROM `question`.`q_question_attr` where isDel = 0 and addUserId = %s order by id desc LIMIT  %s,%s";
+    sql = vsprintf(sql, [param.addUserId, (param.pageIndex - 1) * _pageNum, _pageNum]);
     console.log('sql:' + sql);
     query(sql, (err, queryData, fields) => {
         if(err){
@@ -251,19 +261,15 @@ function paperTotal(param, callback) {
 }
 
 //问卷详情   todo  需改
-function infoPaper(param, callback) {
+exports.infoPaper = (param, callback)  => {
     if(typeof param != "object" || Object.keys(param).length <1){
         callback('参数错误！');
         return;
     }
     let resultData = {};
-    let sql = "SELECT * FROM `question`.`q_question_attr` where ";
-    let whereData = [];
-    for(let _key in param){
-      whereData.push("`"+_key+"` = "+mysql.escape(param[_key])+" " );
-    }
-    sql += whereData.join(" and ");
-    console.log('sql:' + sql);
+    let sql = "SELECT * FROM `question`.`q_question_attr`";
+    sql = whereData(sql, param);
+    console.log('infoPaper_sql:' + sql);
 
     new Promise(function(resolve, reject) {
         query(sql, (err, queryData, fields) => {
@@ -395,11 +401,14 @@ exports.userAnswerTotal = (param, callback) => {
   if(Object.keys(param).length){
       let whereData = [];
       for(let _key in param){
+        if(['token'].indexOf(_key) > -1){
+          continue;
+        }
         whereData.push("`"+_key+"` = "+mysql.escape(param[_key])+" " );
       }
-      sql += " where " + whereData.join(" and ");
+    if(whereData.length)sql += " where " + whereData.join(" and ");
   }
-  console.log('sql:' + sql);
+  console.log('userAnswerTotal_sql:' + sql);
   query(sql, (err, queryData, fields) => {
     if(err){
       throw err;
@@ -463,14 +472,56 @@ exports.tableFieldsCount = (param, callback) => {
   });
 };
 
+/**
+ * 题目类型列表
+ * @param param
+ * @param callback
+ */
+exports.questionCategoryList = (param, callback) => {
+  let sql = "SELECT * FROM `question`.`q_category` ";
+  if(typeof param.fields != "undefined"){
+    sql = selectFields(sql, param.fields);
+    delete param.fields;
+  }
+  sql = whereData(sql, param);
+  console.log('questionCategoryList_sql:' + sql);
+  query(sql, (err, queryData, fields) => {
+    if(err){
+      callback([]);
+      throw err;
+    }
+    callback(queryData);
+  });
+}
+
+/**
+ * 注册用户
+ * @param param
+ * @param callback
+ */
+exports.registerUser = (param, callback) =>{
+  let sql = "INSERT INTO `question`.`q_user`(`userName`, `userPw`, `createTime` ) VALUES ( %s, %s, %s);";
+  sql = vsprintf(sql, [
+    mysql.escape(param.userName),
+    mysql.escape(param.userPw),
+    mysql.escape(param.createTime),
+  ]);
+  console.log('sql:' + sql);
+  query(sql, (err, queryData, fields) => {
+    if(err){
+      callback(false);
+      throw err;
+    }
+    callback(queryData.affectedRows > 0);
+  });
+}
+
 
 module.exports = Object.assign({
     init,
     query,
     login,
-    addquestion,
     testinsert,
     listPaper,
-    infoPaper,
     paperTotal
 }, module.exports);

@@ -7,29 +7,47 @@
                     <div class="paper-small" v-html="paperInfo.description"></div>
                 </div>
                 <div class="question-list">
-                    <div :class="{item: true, notAnswer: notAnswerData.indexOf(item.id) > -1 ? 1 : 0 }" v-for="item in questionList">
-                        <div class="title">
-                            <span class="isBida" v-if="item.isBida">*</span>
-                            <span class="title-txt" v-html="item.title"></span>
-                            <span class="qc" v-if="[2].indexOf(item.qcId) > -1">【{{item.qcName}}】</span>
-                        </div>
-                        <div class="question-tips" v-html="item.tips"></div>
+                    <div :class="{item: item.qcId != 7, notAnswer: notAnswerData.indexOf(item.id) > -1 || notAnswerData.join(',').indexOf(item.id+ '_') > -1 ? 1 : 0 }" v-for="item in questionList">
+                        <!--段落说明-->
+                        <section v-if="[7].indexOf(item.qcId) > -1" class="section-tips" v-html="item.contentJson[0]"></section>
 
-                        <div class="answer-list">
-                            <a-radio-group v-if="[1].indexOf(item.qcId) > -1" @change="onChangeRadio(item.id)" v-model="userAnswerData['subject_'+item.id]"  >
-                                <div v-for="(answers,index) in item.contentJson" :key="index" class="answer-item">
-                                    <a-radio :value=index>{{answers.name}}</a-radio>
+                        <div v-else>
+                            <div class="title">
+                                <span class="isBida" v-if="item.isBida">*</span>
+                                <span class="title-txt" v-html="item.title"></span>
+                                <span class="qc" v-if="[2].indexOf(item.qcId) > -1">【{{item.qcName}}】</span>
+                            </div>
+                            <div class="question-tips" v-html="item.tips"></div>
+
+                            <div class="answer-list">
+                                <a-radio-group v-if="[1].indexOf(item.qcId) > -1" @change="onChangeRadio(item.id)" v-model="userAnswerData['subject_'+item.id]"  >
+                                    <div v-for="(answers,index) in item.contentJson" :key="index" class="answer-item">
+                                        <a-radio :value=index>{{answers.name}}</a-radio>
+                                    </div>
+                                </a-radio-group>
+
+
+                                <a-checkbox-group @change="onChangeCheckbox(item.id)" v-if="[2].indexOf(item.qcId) > -1" v-model="userAnswerData['subject_'+item.id]">
+                                    <div v-for="(answers,index) in item.contentJson" :key="index" class="answer-item">
+                                        <a-checkbox :value=index>{{answers.name}}</a-checkbox>
+                                    </div>
+                                </a-checkbox-group>
+
+                                <a-textarea v-if="[3].indexOf(item.qcId) > -1" v-model="userAnswerData['subject_'+item.id]" placeholder="请填写" autosize />
+
+                                <div v-if="[4,6].indexOf(item.qcId) > -1">
+                                    <table  cellpadding="10px">
+                                        <tr v-for="(answers,index) in item.contentJson">
+                                            <td class="trLeft">{{answers.name}}</td>
+                                            <td>
+                                                <a-textarea v-if="[4].indexOf(item.qcId) > -1"  placeholder="请填写" autosize @change="onChangeArrTextarea($event, item.id, index)" style="width: 360px" />
+                                                <a-rate v-if="[6].indexOf(item.qcId) > -1" allowHalf @change="onChangeRate($event, item.id, index)" />
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
-                            </a-radio-group>
 
-
-                            <a-checkbox-group @change="onChangeCheckbox(item.id)" v-if="[2].indexOf(item.qcId) > -1" v-model="userAnswerData['subject_'+item.id]">
-                                <div v-for="(answers,index) in item.contentJson" :key="index" class="answer-item">
-                                    <a-checkbox :value=index>{{answers.name}}</a-checkbox>
-                                </div>
-                            </a-checkbox-group>
-
-                            <a-textarea v-if="[3].indexOf(item.qcId) > -1" v-model="userAnswerData['subject_'+item.id]" placeholder="请填写" autosize />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,6 +68,7 @@
   import {submitPaperApi} from "@/api/user";
   import {mapState, mapMutations} from 'vuex'
   import { ADDUSERANSWERDATA} from '@/store/mutation-types'
+  import {setStore} from '@/utils/common'
 
 
   export default {
@@ -93,22 +112,40 @@
       });
     },
     methods:{
-      onChangeRadio(qId){
-        // console.log('radio'+ e.target.value);
+
+      clearNotAnswerData(qId){
         let _index =  this.notAnswerData.indexOf(qId);
-        console.log(_index, qId, this.notAnswerData);
+        console.log(_index);
         if(_index > -1){
           this.notAnswerData.splice(_index, 1);
         }
+      },
+      onChangeRadio(qId){
+        // console.log('radio'+ e.target.value);
+        this.clearNotAnswerData(qId);
       },
       onChangeCheckbox(qId){
         // console.log('checked = ', checkedValues);
-        let _index =  this.notAnswerData.indexOf(qId);
-        if(_index > -1){
-          this.notAnswerData.splice(_index, 1);
-        }
+        this.clearNotAnswerData(qId);
       },
+      onChangeRate(starNum, qItem, aIndex){
+        if(typeof this.userAnswerData['subject_'+ qItem] == "undefined"){
+          this.userAnswerData['subject_'+ qItem] = [];
+        }
+        this.userAnswerData['subject_'+ qItem][aIndex] = starNum;
+        this.clearNotAnswerData(qItem +'_'+ aIndex);
+        console.log(qItem +'_'+ aIndex);
+      },
+      onChangeArrTextarea(e, qItem, aIndex){
+        if(typeof this.userAnswerData['subject_'+ qItem] == "undefined"){
+          this.userAnswerData['subject_'+ qItem] = [];
+        }
+        this.userAnswerData['subject_'+ qItem][aIndex] = e.target.value;
+        this.clearNotAnswerData(qItem +'_'+ aIndex);
+      },
+
       submitPaper(){
+        // console.log(this.userAnswerData);
         if(!this.paperInfo){
           this.$message.error('未发布！不能提交');
           return;
@@ -116,14 +153,36 @@
         this.notAnswerData = [];
         //必答题目答案
         this.questionList.map((item, index) => {
-          if(item.isBida){
+          if(!item.isBida){
+            return;
+          }
+            // 多项填空  评分 4 ，6
+            if([4,6].indexOf(item.qcId) > -1){
+                item.contentJson.map((cItem, cIndex) => {
+                    if(cItem.isBida){
+                      if(typeof this.userAnswerData['subject_'+ item.id] == "undefined"){
+                        this.notAnswerData.push(item.id+'_'+ cIndex);
+                        return;
+                      } else if(typeof this.userAnswerData['subject_'+ item.id][cIndex] == "undefined"){
+                        this.notAnswerData.push(item.id+'_'+ cIndex);
+                      }else if(!this.userAnswerData['subject_'+ item.id][cIndex]){
+                        this.notAnswerData.push(item.id+'_'+ cIndex);
+                      }
+
+                    }
+                });
+                return;
+            }
+
             // console.log(item.id, this.userAnswerData[item.id], typeof this.userAnswerData[item.id]);
             if(typeof this.userAnswerData['subject_'+item.id] == "undefined"){
               this.notAnswerData.push(item.id);
             } else if(typeof this.userAnswerData['subject_'+item.id] == "object" && !this.userAnswerData['subject_'+item.id].length){
               this.notAnswerData.push(item.id);
             }
-          }
+
+
+
         });
 
         if(this.notAnswerData.length > 0){
@@ -149,6 +208,7 @@
             this.$message.error('提交试卷失败！');
             return;
           }
+          setStore('USERANSWER'+ this.uri, _insertData);
           this.ADDUSERANSWERDATA(_insertData);
           this.$message.success('成功提交！');
           this.$router.push({path: '/my/pc/'+ this.uri});
@@ -194,6 +254,11 @@
                     }
                 }
                 .question-list{
+                    .section-tips{
+                        font-size: 15px;
+                        color: #666666;
+                    }
+
                     .item{
                         margin-bottom:30px;
                         border:2px solid #FFF;
@@ -208,6 +273,10 @@
                             border-bottom: 1px solid #EFEFEF;
                             font-size: 15px;
                             color: #333333;
+                        }
+                        .trLeft{
+                            padding-right: 20px;
+                            text-align: right;
                         }
                     }
                     .title{

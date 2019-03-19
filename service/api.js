@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));//这两个是和post请求有关系的
 app.use(express.urlencoded({ extended: false }));//这个是和get又关系的
 let config = null;
+var common = require('./utils/common');
 
 module.exports.start = function (cfg) {
     config = cfg;
@@ -35,7 +36,33 @@ function _httpSend(res, result, code = 0, msg = 'success'){
         errmsg: msg,
         data: result
     };
+    if(code > 0){
+      _webResult.errmsg = result;
+    }
     res.send(JSON.stringify(_webResult));
+}
+
+
+function getUserInfo(res, token) {
+  if(token == undefined){
+    _httpSend(res, 'token 错误！', 1100);
+    return;
+  }
+  // Decrypt
+  let bytes  = CryptoJS.AES.decrypt(token, env.ENCRYPTKEY);
+  let userDataStr = '';
+  try {
+    userDataStr = bytes.toString(CryptoJS.enc.Utf8);
+  }catch (e) {
+    _httpSend(res, 'token 错误！', 1003);
+    return;
+  }
+  let decryptedData = JSON.parse(userDataStr);
+  if(typeof decryptedData.id == "undefined"){
+    _httpSend(res, 'token 错误！', 1002);
+    return;
+  }
+  return decryptedData;
 }
 
 app.get('/get_version', function (req, res) {
@@ -73,16 +100,45 @@ app.post('/login', (param, res) => {
     });
 });
 
+// 注册
+app.post('/registerUser', (param, res) =>{
+  let registerData = param.body;
+  if(!registerData.userName || !registerData.userPw){
+    return _httpSend(res, '发送数据有误！', 100);
+  }
+
+  // 查询判断是否已存在账号
+  mysqlCon.selectUser({
+    fields: ['id'],
+    userName: registerData.userName
+  }, (result) => {
+    if(result.length){
+      return _httpSend(res, '已存在'+ registerData.userName + '的账号', 101);
+    }
+
+    mysqlCon.registerUser({
+      userName: registerData.userName,
+      userPw: registerData.userPw,
+      createTime: parseInt(new Date().getTime()/1000)
+    }, (rStatus) => {
+      return _httpSend(res, rStatus);
+    })
+  })
+
+});
+
 //完成编辑题目
 app.post('/editQuestion', (param, res) => {
     let bodyData = param.body;
     if(typeof bodyData.id == "undefined"){
         return _httpSend(res, '发送数据有误！', 100);
     }
-    //编辑
+  let decryptedData = getUserInfo(res, bodyData.token);
+  delete bodyData['token'];
+  bodyData.questionList = JSON.parse(bodyData.questionList);
+
+  //编辑
     if(bodyData.id > 0){
-        //`title`, `description`, `startTime`, `endTime`, `contentNum`, `contentScore`, `view`, `isRandom`, `type`, `time`
-        bodyData.questionList = JSON.parse(bodyData.questionList);
         let updateData = {
             id: bodyData.id,
             title: bodyData.title,
@@ -93,15 +149,15 @@ app.post('/editQuestion', (param, res) => {
             // contentScore: bodyData.contentScore,
             // view: bodyData.view,
             // isRandom: bodyData.isRandom,
-            type: bodyData.type,
-            time: parseInt(new Date().getTime()/ 1000)
+          addUserId: decryptedData.id,
+          type: bodyData.type,
+          time: parseInt(new Date().getTime()/ 1000)
         };
         mysqlCon.editPaper(updateData, (result) => {
             if(!result){
                 _httpSend(res, '更新失败！', 1000);
                 return;
             }
-
 
             //批量删除题目
             mysqlCon.deleteQuestion(updateData.id, (result) => {
@@ -125,9 +181,37 @@ app.post('/editQuestion', (param, res) => {
         });
 
     }else {
-        mysqlCon.addquestion( bodyData, (result) => {
-            _httpSend(res, result);
+      let _insertData = {
+        uri: common.createRandomStr(20),
+        title:bodyData.title,
+        description: bodyData.description,
+        startTime: bodyData.startTime,
+        endTime: bodyData.endTime,
+        contentNum: bodyData.questionList.length,
+        contentScore: 100,
+        view: 0,
+        isRandom: 0,
+        type: bodyData.type,
+        time:  parseInt(new Date().getTime()/ 1000),
+        addUserId: decryptedData.id
+      }
+      mysqlCon.addPaper(_insertData, (result) => {
+        if(!result){
+          _httpSend(res, '添加失败！', 1006);
+          return;
+        }
+        bodyData.id = result;
+        // 批量添加
+        mysqlCon.insertQuestion(bodyData, (result) => {
+          if(!result){
+            _httpSend(res, '添加失败！2', 1007);
+            return;
+          }
+          _httpSend(res, result);
         });
+
+      });
+
     }
 });
 
@@ -178,7 +262,10 @@ app.post('/publishPaper', (param, res) => {
 
 //试卷列表
 app.post('/listPaper', (param, res) => {
-    mysqlCon.listPaper(param.body, (result) => {
+  let selectData = param.body;
+  let decryptedData = getUserInfo(res, selectData.token);
+  selectData.addUserId = decryptedData.id;
+  mysqlCon.listPaper(selectData, (result) => {
         _httpSend(res, result);
     });
 });
@@ -322,6 +409,15 @@ app.post('/user/answerTotal', (param, res) => {
   });
 });
 
+
+/**
+ * 题目类型
+ */
+app.post('/question/categoryList', (param,res) => {
+  mysqlCon.questionCategoryList(param.body, (result) => {
+    _httpSend(res, result);
+  })
+});
 
 
 

@@ -1,0 +1,622 @@
+web server is listening on 10080
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551169634937ug9iafx' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 15
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551169634937ug9iafx' 
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551171240138kg7zu1r' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 16
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551171240138kg7zu1r' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551169634937ug9iafx' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551169634937ug9iafx' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 15
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441022,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441022 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441047,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441047 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441117,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441117 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (17, 1, "单选", "<p>一.单选题目</p><p>1.下列那个是JavaScript输出语句？</p>", '[{"name":"A、console.log('hello world')","isAnswer":true},{"name":"B、print('hello')","isAnswer":0},{"name":"C、echo 'hello'","isAnswer":0}]', "5", 1, "1", '', '', 1552441117),(17, 1, "单选", "<p>1=== "1"?</p>", '[{"name":"A、true","isAnswer":0},{"name":"B、false","isAnswer":true}]', "5", 1, "1", '', '', 1552441117),(17, 7, "段落说明", "请在此输入说明文字", '["<p><strong>第二部分-多选题</strong></p>"]', "0", 1, "0", '', '', 1552441117),(17, 2, "多选", "<p>下面哪些正确</p>", '[{"name":"A、1==1","isAnswer":true},{"name":"B、1==2","isAnswer":0},{"name":"C. 1===1","isAnswer":true},{"name":"D.  1==true","isAnswer":true}]', "5", 1, "1", '', '', 1552441117),(17, 3, "单项填空", "<p>写出等于NaN的变量</p>", '[]', "5", 1, "1", '', '', 1552441117),(17, 4, "矩阵填空", "<p>基本信息</p>", '[{"name":"bip账号","value":""},{"name":"姓名","value":""},{"name":"职位","isAnswer":0}]', "5", 1, "1", '', '', 1552441117),(17, 6, "矩阵评分", "<p>对此次培训评价</p>", '[{"name":"讲师总体评分","value":0},{"name":"培训气氛","isAnswer":0},{"name":"培训内容兴趣度","value":0}]', "5", 1, "1", '', '', 1552441117),(17, 7, "段落说明", "请在此输入说明文字", '["<p>请各位务必认真填写！禁止作弊</p>"]', "0", 1, "0", '', '', 1552441117)
+/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'hello world')","isAnswer":true},{"name":"B、print('hello')","isAnswer":0},{"nam' at line 1
+    at Query.Sequence._packetToError (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:280:12)
+    at readableAddChunk (_stream_readable.js:265:11)
+    --------------------
+    at Protocol._enqueue (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:144:48)
+    at PoolConnection.query (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:200:25)
+    at pool.getConnection (/Users/Star/Vue/antd-question/service/utils/mysqlController.js:29:13)
+    at Ping.onOperationComplete (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Pool.js:110:5)
+    at Ping.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:502:10)
+    at Ping._callback (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:468:16)
+    at Ping.Sequence.end (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Ping.Sequence.OkPacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:92:8)
+    at Protocol._parsePacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:76:12)
+web server is listening on 10080
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441223,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441223 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441240,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441240 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (17, 1, "单选", "<p>一.单选题目</p><p>1.下列那个是JavaScript输出语句？</p>", '[{"name":"A、console.log(“hello world”)","isAnswer":true},{"name":"B、print(“hello”)","isAnswer":0},{"name":"C、echo “hello”","isAnswer":0}]', "5", 1, "1", '', '', 1552441240),(17, 1, "单选", "<p>1=== "1"?</p>", '[{"name":"A、true","isAnswer":0},{"name":"B、false","isAnswer":true}]', "5", 1, "1", '', '', 1552441240),(17, 7, "段落说明", "请在此输入说明文字", '["<p><strong>第二部分-多选题</strong></p>"]', "0", 1, "0", '', '', 1552441240),(17, 2, "多选", "<p>下面哪些正确</p>", '[{"name":"A、1==1","isAnswer":true},{"name":"B、1==2","isAnswer":0},{"name":"C. 1===1","isAnswer":true},{"name":"D.  1==true","isAnswer":true}]', "5", 1, "1", '', '', 1552441240),(17, 3, "单项填空", "<p>写出等于NaN的变量</p>", '[]', "5", 1, "1", '', '', 1552441240),(17, 4, "矩阵填空", "<p>基本信息</p>", '[{"name":"bip账号","value":""},{"name":"姓名","value":""},{"name":"职位","isAnswer":0}]', "5", 1, "1", '', '', 1552441240),(17, 6, "矩阵评分", "<p>对此次培训评价</p>", '[{"name":"讲师总体评分","value":0},{"name":"培训气氛","isAnswer":0},{"name":"培训内容兴趣度","value":0}]', "5", 1, "1", '', '', 1552441240),(17, 7, "段落说明", "请在此输入说明文字", '["<p>请各位务必认真填写！禁止作弊</p>"]', "0", 1, "0", '', '', 1552441240)
+/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1"?</p>", '[{"name":"A、true","isAnswer":0},{"name":"B、false","isAnswer":true' at line 1
+    at Query.Sequence._packetToError (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:280:12)
+    at readableAddChunk (_stream_readable.js:265:11)
+    --------------------
+    at Protocol._enqueue (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:144:48)
+    at PoolConnection.query (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:200:25)
+    at pool.getConnection (/Users/Star/Vue/antd-question/service/utils/mysqlController.js:29:13)
+    at Ping.onOperationComplete (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Pool.js:110:5)
+    at Ping.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:502:10)
+    at Ping._callback (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:468:16)
+    at Ping.Sequence.end (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Ping.Sequence.OkPacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:92:8)
+    at Protocol._parsePacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:76:12)
+web server is listening on 10080
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441285,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441285 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552441297,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552441297 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (17, 1, "单选", "<p>一.单选题目</p><p>1.下列那个是JavaScript输出语句？</p>", '[{"name":"A、console.log(“hello world”)","isAnswer":true},{"name":"B、print(“hello”)","isAnswer":0},{"name":"C、echo “hello”","isAnswer":0}]', "5", 1, "1", '', '', 1552441297),(17, 1, "单选", "<p>1=== ”1“?</p>", '[{"name":"A、true","isAnswer":0},{"name":"B、false","isAnswer":true}]', "5", 1, "1", '', '', 1552441297),(17, 7, "段落说明", "请在此输入说明文字", '["<p><strong>第二部分-多选题</strong></p>"]', "0", 1, "0", '', '', 1552441297),(17, 2, "多选", "<p>下面哪些正确</p>", '[{"name":"A、1==1","isAnswer":true},{"name":"B、1==2","isAnswer":0},{"name":"C. 1===1","isAnswer":true},{"name":"D.  1==true","isAnswer":true}]', "5", 1, "1", '', '', 1552441297),(17, 3, "单项填空", "<p>写出等于NaN的变量</p>", '[]', "5", 1, "1", '', '', 1552441297),(17, 4, "矩阵填空", "<p>基本信息</p>", '[{"name":"bip账号","value":""},{"name":"姓名","value":""},{"name":"职位","isAnswer":0}]', "5", 1, "1", '', '', 1552441297),(17, 6, "矩阵评分", "<p>对此次培训评价</p>", '[{"name":"讲师总体评分","value":0},{"name":"培训气氛","isAnswer":0},{"name":"培训内容兴趣度","value":0}]', "5", 1, "1", '', '', 1552441297),(17, 7, "段落说明", "请在此输入说明文字", '["<p>请各位务必认真填写！禁止作弊</p>"]', "0", 1, "0", '', '', 1552441297)
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '16' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 16
+web server is listening on 10080
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '16' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 16
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552442035,`id` = '16',`title` = '考试',`description` = '说明',`startTime` = '0',`endTime` = '0',`contentNum` = 4,`type` = '2',`time` = 1552442035 WHERE `id` = 16;
+sql:delete from `q_question` where qqaId = '16'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (16, 2, "多选", "'<p>1==\'1\'</p>'", ''[{\"name\":\"A、console.log(\'hello\')\",\"isAnswer\":true},{\"name\":\"B、console.error(\'1)\",\"isAnswer\":0}]'', "5", 1, "1", '', '', 1552442035),(16, 3, "单项填空", "'<p>单项填空题目</p>'", ''[]'', "5", 1, "1", '', '', 1552442035),(16, 1, "单选", "'标题'", ''[{\"name\":\"A、选项\",\"isAnswer\":true},{\"name\":\"B、选项\",\"isAnswer\":0}]'', "5", 1, "1", '', '', 1552442035),(16, 2, "多选", "'标题'", ''[{\"name\":\"A、选项\",\"isAnswer\":true},{\"name\":\"B、选项\",\"isAnswer\":0}]'', "5", 1, "1", '', '', 1552442035)
+/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:80
+        throw err; // Rethrow non-MySQL errors
+        ^
+
+Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[{\"name\":\"A、console.log(\'hello\')\",\"isAnswer\":true},{\"name\":\"B、con' at line 1
+    at Query.Sequence._packetToError (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:47:14)
+    at Query.ErrorPacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Query.js:77:18)
+    at Protocol._parsePacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:76:12)
+    at Protocol.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:38:16)
+    at Socket.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:91:28)
+    at Socket.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:502:10)
+    at Socket.emit (events.js:182:13)
+    at addChunk (_stream_readable.js:280:12)
+    at readableAddChunk (_stream_readable.js:265:11)
+    --------------------
+    at Protocol._enqueue (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:144:48)
+    at PoolConnection.query (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:200:25)
+    at pool.getConnection (/Users/Star/Vue/antd-question/service/utils/mysqlController.js:29:13)
+    at Ping.onOperationComplete (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Pool.js:110:5)
+    at Ping.<anonymous> (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:502:10)
+    at Ping._callback (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/Connection.js:468:16)
+    at Ping.Sequence.end (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:83:24)
+    at Ping.Sequence.OkPacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/sequences/Sequence.js:92:8)
+    at Protocol._parsePacket (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Protocol.js:278:23)
+    at Parser.write (/Users/Star/Vue/antd-question/service/node_modules/.2.16.0@mysql/lib/protocol/Parser.js:76:12)
+web server is listening on 10080
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552442139,`id` = '16',`title` = '考试',`description` = '说明',`startTime` = '0',`endTime` = '0',`contentNum` = 4,`type` = '2',`time` = 1552442139 WHERE `id` = 16;
+sql:delete from `q_question` where qqaId = '16'
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552442163,`id` = '16',`title` = '考试',`description` = '说明',`startTime` = '0',`endTime` = '0',`contentNum` = 4,`type` = '2',`time` = 1552442163 WHERE `id` = 16;
+sql:delete from `q_question` where qqaId = '16'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (16, 2, "多选", '<p>1==\'1\'</p>', '[{\"name\":\"A、console.log(\'hello\')\",\"isAnswer\":true},{\"name\":\"B、console.error(\'1)\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552442163),(16, 3, "单项填空", '<p>单项填空题目</p>', '[]', "5", 1, "1", '', '', 1552442163),(16, 1, "单选", '标题', '[{\"name\":\"A、选项\",\"isAnswer\":true},{\"name\":\"B、选项\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552442163),(16, 2, "多选", '标题', '[{\"name\":\"A、选项\",\"isAnswer\":true},{\"name\":\"B、选项\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552442163)
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '16' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 16
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_user_answer` order by id desc LIMIT  0,10
+sql:SELECT count(1) as total FROM `question`.`q_user_answer` 
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552442227,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552442227 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (17, 1, "单选", '<p>一.单选题目</p><p>1.下列那个是JavaScript输出语句？</p>', '[{\"name\":\"A、console.log(\'hello world\')\",\"isAnswer\":true},{\"name\":\"B、print(\\\"hello\\\")\",\"isAnswer\":0},{\"name\":\"C、echo \'hello\'\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552442227),(17, 1, "单选", '<p>1=== \'1\'?</p>', '[{\"name\":\"A、true\",\"isAnswer\":0},{\"name\":\"B、false\",\"isAnswer\":true}]', "5", 1, "1", '', '', 1552442227),(17, 7, "段落说明", '请在此输入说明文字', '[\"<p><strong>第二部分-多选题</strong></p>\"]', "0", 1, "0", '', '', 1552442227),(17, 2, "多选", '<p>下面哪些正确</p>', '[{\"name\":\"A、1==1\",\"isAnswer\":true},{\"name\":\"B、1==2\",\"isAnswer\":0},{\"name\":\"C. 1===1\",\"isAnswer\":true},{\"name\":\"D.  1==true\",\"isAnswer\":true}]', "5", 1, "1", '', '', 1552442227),(17, 3, "单项填空", '<p>写出等于NaN的变量</p>', '[]', "5", 1, "1", '', '', 1552442227),(17, 4, "矩阵填空", '<p>基本信息</p>', '[{\"name\":\"bip账号\",\"value\":\"\"},{\"name\":\"姓名\",\"value\":\"\"},{\"name\":\"职位\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552442227),(17, 6, "矩阵评分", '<p>对此次培训评价</p>', '[{\"name\":\"讲师总体评分\",\"value\":0},{\"name\":\"培训气氛\",\"isAnswer\":0},{\"name\":\"培训内容兴趣度\",\"value\":0}]', "5", 1, "1", '', '', 1552442227),(17, 7, "段落说明", '请在此输入说明文字', '[\"<p>请各位务必认真填写！禁止作弊</p>\"]', "0", 1, "0", '', '', 1552442227)
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552458956,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552458956 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (17, 1, "单选", '<p>一.单选题目</p><p>1.下列那个是JavaScript输出语句？</p>', '[{\"name\":\"A、console.log(\'hello world\')\",\"isAnswer\":true},{\"name\":\"B、print(\\\"hello\\\")\",\"isAnswer\":0},{\"name\":\"C、echo \'hello\'\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552458956),(17, 1, "单选", '<p>1=== \'1\'?</p>', '[{\"name\":\"A、true\",\"isAnswer\":0},{\"name\":\"B、false\",\"isAnswer\":true}]', "5", 1, "1", '', '', 1552458956),(17, 7, "段落说明", '请在此输入说明文字', '[\"<p><strong>第二部分-多选题（xx分）</strong></p>\"]', "0", 1, "0", '', '', 1552458956),(17, 2, "多选", '<p>下面哪些正确</p>', '[{\"name\":\"A、1==1\",\"isAnswer\":true},{\"name\":\"B、1==2\",\"isAnswer\":0},{\"name\":\"C. 1===1\",\"isAnswer\":true},{\"name\":\"D.  1==true\",\"isAnswer\":true}]', "5", 1, "1", '', '', 1552458956),(17, 3, "单项填空", '<p>写出等于NaN的变量</p>', '[]', "5", 1, "1", '', '', 1552458956),(17, 4, "矩阵填空", '<p>基本信息</p>', '[{\"name\":\"bip账号\",\"value\":\"\"},{\"name\":\"姓名\",\"value\":\"\"},{\"name\":\"职位\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552458956),(17, 6, "矩阵评分", '<p>对此次培训评价</p>', '[{\"name\":\"讲师总体评分\",\"value\":0},{\"name\":\"培训气氛\",\"isAnswer\":0},{\"name\":\"培训内容兴趣度\",\"value\":0}]', "5", 1, "1", '', '', 1552458956),(17, 7, "段落说明", '请在此输入说明文字', '[\"<p>请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊</p>\"]', "0", 1, "0", '', '', 1552458956)
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `question`.`q_question_attr` SET `time` = 1552461195,`id` = '17',`title` = '培训调查',`description` = '<p>培训考试！！！！</p>',`startTime` = '0',`endTime` = '0',`contentNum` = 8,`type` = '2',`time` = 1552461195 WHERE `id` = 17;
+sql:delete from `q_question` where qqaId = '17'
+sql:INSERT INTO `question`.`q_question`(`qqaId`, `qcId`, `qcName`, `title`, `content`,  `score`, `status`, `isBida`, `tips`, `answerAnalysis`, `time`) VALUES (17, 1, "单选", '<p>一.单选题目</p><p>1.下列那个是JavaScript输出语句？</p>', '[{\"name\":\"A、console.log(\'hello world\')\",\"isAnswer\":true},{\"name\":\"B、print(\\\"hello\\\")\",\"isAnswer\":0},{\"name\":\"C、echo \'hello\'\",\"isAnswer\":0}]', "5", 1, "1", '', '', 1552461195),(17, 1, "单选", '<p>1=== \'1\'?</p>', '[{\"name\":\"A、true\",\"isAnswer\":0},{\"name\":\"B、false\",\"isAnswer\":true}]', "5", 1, "1", '', '', 1552461195),(17, 7, "段落说明", '请在此输入说明文字', '[\"<p><strong>第二部分-多选题（xx分）</strong></p>\"]', "0", 1, "0", '', '', 1552461195),(17, 2, "多选", '<p>下面哪些正确</p>', '[{\"name\":\"A、1==1\",\"isAnswer\":true},{\"name\":\"B、1==2\",\"isAnswer\":0},{\"name\":\"C. 1===1\",\"isAnswer\":true},{\"name\":\"D.  1==true\",\"isAnswer\":true}]', "5", 1, "1", '', '', 1552461195),(17, 3, "单项填空", '<p>写出等于NaN的变量</p>', '[]', "5", 1, "1", '', '', 1552461195),(17, 4, "矩阵填空", '<p>基本信息</p>', '[{\"name\":\"bip账号\",\"value\":\"\",\"isBida\":true},{\"name\":\"姓名\",\"value\":\"\",\"isBida\":true},{\"name\":\"职位\",\"isAnswer\":0,\"isBida\":true}]', "5", 1, "1", '', '', 1552461195),(17, 6, "矩阵评分", '<p>对此次培训评价</p>', '[{\"name\":\"讲师总体评分\",\"value\":0,\"isBida\":true},{\"name\":\"培训气氛\",\"isAnswer\":0,\"isBida\":false},{\"name\":\"培训内容兴趣度\",\"value\":0,\"isBida\":true},{\"name\":\"培训时间\",\"isAnswer\":0,\"isBida\":true}]', "5", 1, "1", '', '', 1552461195),(17, 7, "段落说明", '请在此输入说明文字', '[\"<p>请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊请各位务必认真填写！禁止作弊</p>\"]', "0", 1, "0", '', '', 1552461195)
+sql:SELECT * FROM `question`.`q_question_attr` where isDel = 0 order by id desc LIMIT  0,6
+sql:SELECT count(*) as total FROM `question`.`q_question_attr` where isDel = 0
+sql:SELECT * FROM `question`.`q_question_attr` where `id` = '17' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+questionCategoryList_sql:SELECT * FROM `question`.`q_category`  where `status` = '1' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT id FROM `question`.`q_question_attr`  where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question`  where `qqaId` = 17 
+sql:INSERT INTO `question`.`q_user_answer`(`uri`, `userId`, `userName`, `answerJson`, `ip`, `userScore`, `useTime`, `time`) VALUES ( '1551772955887ofp0xba', '1', '匿名用户', '{\"subject_169\":0,\"subject_170\":1,\"subject_172\":[0,2,3],\"subject_173\":\"parseInt()\",\"subject_174\":[\"123\",\"23\",\"1\"],\"subject_175\":[3.5,0,4,4]}', '', 15, '63', '1552464940');
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT id FROM `question`.`q_question_attr`  where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question`  where `qqaId` = 17 
+sql:INSERT INTO `question`.`q_user_answer`(`uri`, `userId`, `userName`, `answerJson`, `ip`, `userScore`, `useTime`, `time`) VALUES ( '1551772955887ofp0xba', '1', '匿名用户', '{\"subject_169\":0,\"subject_170\":1,\"subject_172\":[0,2],\"subject_173\":\"dsafdsa\",\"subject_174\":[\"1\",\"2\",\"3\"],\"subject_175\":[1,1.5,3,4]}', '', 10, '19', '1552466569');
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:SELECT * FROM `question`.`q_question_attr` where `uri` = '1551772955887ofp0xba' 
+sql:SELECT * FROM `question`.`q_question` where qqaId = 17
+sql:UPDATE `q_question_attr` SET  `view` = `view` + 1 where `uri` = '1551772955887ofp0xba' 

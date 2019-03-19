@@ -39,6 +39,7 @@
 <script>
 
     import {listPaperApi, paperTotalApi, deletePaperApi, publishPaperApi} from '@/api/question';
+    import {CookieUtil} from '@/utils/common'
 
     export default {
         data() {
@@ -77,13 +78,13 @@
         mounted(){
             listPaperApi({
                 pageIndex: this.pagination.current,
-                pageNum: this.pagination.defaultPageSize
+                pageNum: this.pagination.defaultPageSize,
             }).then((res) =>{
                 if(res.data.errcode){
                     this.$message.error(res.data.errmsg);
                     return;
                 }
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 this.listPaper = res.data.data;
             });
 
@@ -92,7 +93,7 @@
                     this.$message.error(res.data.errmsg);
                     return;
                 }
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 this.pagination.total = res.data.data.total;
             });
         },

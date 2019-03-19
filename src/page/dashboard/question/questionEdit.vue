@@ -4,9 +4,7 @@
 
         <a-affix :offsetTop="2">
             <div class="edit-content-head">
-                <div class="item" @click="danxuanBtn"><a-icon type="check-circle"  />单选</div>
-                <div class="item" @click="duoxuanBtn"><a-icon type="check-square" />多选</div>
-                <div class="item" @click="danxuantiankongBtn"><a-icon type="form" />单项填空</div>
+                <div class="item" @click="menuItemTap(qcitem)" v-for="qcitem in categoryList"><a-icon :type="qcitem.icon"  />{{qcitem.name}}</div>
             </div>
         </a-affix>
         <div class="edit-content-body-head" @click="paperTitleDescModalFun">
@@ -40,26 +38,71 @@
 
         <div class="edit-content-body">
             <div class="content-list">
-                <div class="item" v-for="(question, qindex) in questionList" :key="qindex" @click="changeEditItem(qindex)">
+
+
+                <div class="item" v-for="(question, qindex) in questionList" :key="qindex" @click="changeEditItem(qindex)" @mouseover="mouseoverItem(qindex)" @mouseout="mouseoutItem(qindex)">
+
+                    <!--other-->
+                    <div v-if="[7].indexOf(question.qcId) > -1" >
+                        <!--段落说明-->
+                        <div class="paragraph-layer">
+                            <div class="question-title-layer">
+                                <div v-if="question.answerJson[0].length >= 1" class="paragraph-desc" v-html="question.answerJson[0]"></div>
+                                <div v-else class="paragraph-desc">{{question.title}}</div>
+                            </div>
+                            <div class="edit-layer-content" v-if="question.isEdit">
+                                <ckeditor :editor="editor" v-model="question.answerJson[0]" :config="editorConfig"></ckeditor>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--paper-->
+                    <div v-else>
                     <div class="question-title-layer">
                         <div class="bida" v-if="question.isBida">*</div>
                         <div class="title" v-html="question.title"></div>
-                        <div class="score" v-if="question.score">（分值：{{question.score}} 分）</div>
+
+                        <div class="score" v-if="question.score && [1,2,3].indexOf(question.qcId) > -1">（分值：{{question.score}} 分）</div>
                     </div>
 
                     <div class="answer-tips" v-if="question.tips.length > 2" v-html="question.tips"></div>
                     <div class="answer-data">
 
                         <!--多项选择-->
-                        <div :class="{'answer-item':true, isanswer:item.isAnswer }" v-for="(item,index) in question.answerJson">
-                            <label v-if="[1,2].indexOf(question.qcId) > -1">
+                        <div v-if="[1,2].indexOf(question.qcId) > -1" :class="{'answer-item':true, isanswer:item.isAnswer }" v-for="(item,index) in question.answerJson">
+                            <label>
                             <input type="checkbox" disabled :name="qindex+ '_answer'" :checked="Boolean(item.isAnswer)" :value="item.isAnswer"  v-if="question.qcId == 2"/>
                             <input type="radio" disabled :name="qindex+ '_answer'" :checked="Boolean(item.isAnswer)" :value="item.isAnswer" v-if="question.qcId == 1"/>
                             {{item.name + (item.isAnswer? '（正确答案）': '')}}</label>
                         </div>
 
+                        <!--矩阵填空-->
+                        <!--矩阵评分-->
+                        <div v-if="[4,6].indexOf(question.qcId) > -1">
+                            <table cellpadding="5">
+                                <tr v-for="(item,index) in question.answerJson">
+                                    <td align="right">
+                                        {{item.name}}
+                                    </td>
+                                    <td>
+                                        <a-textarea v-if="question.qcId == 4" autosize class="textarea" disabled />
+                                        <a-rate v-if="question.qcId == 6" :defaultValue="item.vaule" allowHalf disabled />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
                         <!--单项填空-->
                         <a-textarea autosize v-if="[3].indexOf(question.qcId) > -1" class="textarea" disabled />
+
+                        <!--段落说明-->
+                        <div v-if="[7].indexOf(question.qcId) > -1">
+                            <div v-if="!item">请在此输入说明文字</div>
+                            <div v-else>
+                                {{item}}
+                            </div>
+                        </div>
                     </div>
                     <div class="answer-jiexi" v-if="question.answerAnalysis.length > 2" v-html="question.answerAnalysis"></div>
 
@@ -69,8 +112,8 @@
                         <div class="category">
                             <div class="select-category">
                             题目类型
-                            <a-select :defaultValue="question.qcName" style="width: 120px" @change="handleChange" >
-                                <a-select-option :value="type.categoryName" v-for="type in categoryList">{{type.categoryName}}</a-select-option>
+                            <a-select :defaultValue="question.qcName" style="width: 120px" @change="handleChange" disabled>
+                                <a-select-option :value="type.name" v-for="type in categoryList">{{type.name}}</a-select-option>
                             </a-select>
                             </div>
 
@@ -89,7 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="score">
+                        <div class="score" v-if="[1,2,3].indexOf(question.qcId) > -1">
                             <span>题目分数 <a-input v-model="question.score" class="score" /></span>
                             <span>
                                 <a-button @click="answerjiexi(qindex)" size="small">设置答案解析</a-button>
@@ -104,7 +147,6 @@
                                     <ckeditor :editor="editor" v-model="question.answerAnalysis" :config="editorConfig"></ckeditor>
                                 </a-modal>
                             </div>
-
                         </div>
 
 
@@ -133,11 +175,50 @@
                                         </td>
                                     </tr>
                                 </tbody>
+                            </table>
+                        </div>
 
+                        <div v-if="[4, 6].indexOf(question.qcId) > -1" class="answer-list">
+                            <table cellpadding="5px">
+                                <thead>
+                                <tr>
+                                    <th>行标题</th>
+                                    <th>必答</th>
+                                    <th>上移下移</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(item,index) in question.answerJson">
+                                    <td width="410px">
+                                        <a-input v-model="item.name" style="width: 335px"/>
+                                        <a-icon type="plus-circle" class="btn" @click="editAnswerNum('add', qindex, index)"/>
+                                        <a-icon type="minus-circle" class="btn" @click="editAnswerNum('delete', qindex, index)"/>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" @change="setAnswerInput(question.qcId, qindex, index)" :name="qindex+ '_answer_edit'" v-model="item.isBida" :value="item.isBida" />
+                                    </td>
+                                    <td>
+                                        <a-icon type="up-circle" class="btn" @click="moveAnswer('up', qindex, index)" />
+                                        <a-icon type="down-circle" class="btn" @click="moveAnswer('down' ,qindex, index)" />
+                                    </td>
+                                </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
+                    </div>
 
+
+
+                    <!--item-tools-->
+                    <div class="item-tools-layer">
+                        <div class="tools-list" v-if="mouseState[qindex] != undefined && !question.isEdit">
+                            <a-button class="tbtn" icon="edit" size="small">编辑</a-button>
+                            <a-button class="tbtn" icon="delete" size="small" @click="delItem($event, qindex)">删除</a-button>
+                            <a-button class="tbtn" icon="up" size="small" @click="moveItemUp($event, qindex)">上移</a-button>
+                            <a-button class="tbtn" icon="down" size="small" @click="moveItemDown($event, qindex)">下移</a-button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -155,7 +236,8 @@
 <script>
 
     // import MarkdownEditor from '../../../components/MarkdownEditor'
-    import {editQuestionApi, infoPaperApi} from "../../../api/question";
+    import {editQuestionApi, infoPaperApi,questionCategoryListApi} from "../../../api/question";
+    import {CookieUtil} from '@/utils/common'
 
     import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
     // import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
@@ -193,6 +275,10 @@
               paperTipsModal: false,
               paperJiexiModal: false,
 
+              mouseState:[],  //focus  焦点状态
+
+              // questionCategoryListData: [],
+
 
                 paperId: this.$route.params.paperId || 0,
                 title: '考试',
@@ -201,20 +287,7 @@
                 endTime:0,
                 type: 2,
                 editContent: '',
-                categoryList: [
-                    {
-                        id:1,
-                        categoryName: '单选',
-                    },
-                    {
-                        id:2,
-                        categoryName: '多选',
-                    },
-                    {
-                        id:3,
-                        categoryName: '单项填空',
-                    }
-                ],
+                categoryList: [],  // 题目类型
                 questionList: []
             }
         },
@@ -247,83 +320,181 @@
 
                 console.log(this.title, this.description, _result.paperAttr);
             });
+
+            //categorylist
+          questionCategoryListApi({
+            status: 1
+          }).then( (res) => {
+            if(res.data.errcode > 0){
+              this.$message.error(res.data.data);
+              return;
+            }
+            this.categoryList = res.data.data;
+          });
         },
         components: {
         },
         methods: {
-            //单选
-            danxuanBtn(){
-                this.questionList.map( (item, i) => {
-                    item.isEdit = 0;
-                });
-                this.questionList.push({
-                    qcId:1,
-                    qcName: '单选',
-                    title: '标题',
-                    score: 5,
-                    isEdit: 1,
-                    isBida:1,
-                    status:1,
-                  tips: '',
-                  answerAnalysis: '',
-                    answerJson: [
-                        {
-                            name: 'A、选项',
-                            isAnswer: 0,
-                        },
-                        {
-                            name: 'B、选项',
-                            isAnswer: 0,
-                        }
-                    ]
-                });
-            },
-            //多选
-            duoxuanBtn(){
-                this.questionList.map( (item, i) => {
-                    item.isEdit = 0;
-                });
-                this.questionList.push({
-                    qcId:2,
-                    qcName: '多选',
-                    title: '标题',
-                    score: 5,
-                    isEdit: 1,
-                    isBida:1,
-                    status:1,
-                  tips: '',
-                  answerAnalysis: '',
-                    answerJson: [
-                        {
-                            name: 'A、选项',
-                            isAnswer: 0,
-                        },
-                        {
-                            name: 'B、选项',
-                            isAnswer: 0,
-                        }
-                    ]
-                });
-            },
 
-            // 单选填空
-            danxuantiankongBtn(){
-              this.questionList.map( (item, i) => {
-                item.isEdit = 0;
-              });
-              this.questionList.push({
-                qcId:3,
-                qcName: '单项填空',
-                title: '标题',
-                score: 5,
-                isEdit: 1,
-                isBida:1,
-                status:1,
-                tips: '',
-                answerAnalysis: '',
-                answerJson: []
-              });
-            },
+          //体型创建
+          menuItemTap(qcitem){
+            switch (qcitem.id){
+              case 1:
+                this.questionList.map( (item, i) => {
+                  item.isEdit = 0;
+                });
+                this.questionList.push({
+                  qcId:1,
+                  qcName: '单选',
+                  title: '标题',
+                  score: 5,
+                  isEdit: 1,
+                  isBida:1,
+                  status:1,
+                  tips: '',
+                  answerAnalysis: '',
+                  answerJson: [
+                    {
+                      name: 'A、选项',
+                      isAnswer: 0,
+                    },
+                    {
+                      name: 'B、选项',
+                      isAnswer: 0,
+                    }
+                  ]
+                });
+                break;
+              case 2:
+                this.questionList.map( (item, i) => {
+                  item.isEdit = 0;
+                });
+                this.questionList.push({
+                  qcId:2,
+                  qcName: '多选',
+                  title: '标题',
+                  score: 5,
+                  isEdit: 1,
+                  isBida:1,
+                  status:1,
+                  tips: '',
+                  answerAnalysis: '',
+                  answerJson: [
+                    {
+                      name: 'A、选项',
+                      isAnswer: 0,
+                    },
+                    {
+                      name: 'B、选项',
+                      isAnswer: 0,
+                    }
+                  ]
+                });
+                break;
+              case 3:
+                // 单选填空
+                this.questionList.map( (item, i) => {
+                  item.isEdit = 0;
+                });
+                this.questionList.push({
+                  qcId:3,
+                  qcName: '单项填空',
+                  title: '标题',
+                  score: 5,
+                  isEdit: 1,
+                  isBida:1,
+                  status:1,
+                  tips: '',
+                  answerAnalysis: '',
+                  answerJson: []
+                });
+                break;
+              case 4:
+                // 矩阵填空
+                this.questionList.map( (item, i) => {
+                  item.isEdit = 0;
+                });
+                this.questionList.push({
+                  qcId:4,
+                  qcName: '矩阵填空',
+                  title: '标题',
+                  score: 5,
+                  isEdit: 1,
+                  isBida:1,
+                  status:1,
+                  tips: '',
+                  answerAnalysis: '',
+                  answerJson: [
+                    {
+                      name: '标题',
+                      value: '',
+                      isBida:1,
+                    },
+                    {
+                      name: '标题',
+                      value: '',
+                      isBida:1,
+                    }
+                  ]
+                });
+                break;
+              case 5:
+                // 多项填空
+                break;
+              case 6:
+                // 矩阵评分
+                this.questionList.map( (item, i) => {
+                  item.isEdit = 0;
+                });
+                this.questionList.push({
+                  qcId:6,
+                  qcName: '矩阵评分',
+                  title: '标题',
+                  score: 5,
+                  isEdit: 1,
+                  isBida:1,
+                  status:1,
+                  tips: '',
+                  answerAnalysis: '',
+                  answerJson: [
+                    {
+                      name: '物流速度',
+                      value: 0,
+                      isBida:1,
+                    },
+                    {
+                      name: '服务态度',
+                      value: 0,
+                      isBida:1,
+                    }
+                  ]
+                });
+                break;
+              case 7:
+                // 段落说明
+                this.questionList.map( (item, i) => {
+                  item.isEdit = 0;
+                });
+                this.questionList.push({
+                  qcId: 7,
+                  qcName: '段落说明',
+                  title: '请在此输入说明文字',
+                  score: 0,
+                  isEdit: 1,
+                  isBida: 0,
+                  status:1,
+                  tips: '',
+                  answerAnalysis: '',
+                  answerJson: ['']
+                });
+
+                console.log(this.questionList);
+                break;
+              case 8:
+                break;
+            }
+          },
+
 
             //修改答案
             setAnswerInput(questioncategory, qindex, index){
@@ -359,6 +530,8 @@
           batchAddQuestion(){
             this.$message.success('功能版本二补充');
           },
+
+          // 编辑item
             changeEditItem(qindex){
                 console.log('edit'+ qindex);
                 for(let item in this.questionList){
@@ -371,8 +544,46 @@
                         this.questionList[item]['isEdit'] = 0;
                     }
                 }
-                console.log('edit'+ qindex +'_'+this.questionList[qindex]['isEdit']);
+                // console.log('edit'+ qindex +'_'+this.questionList[qindex]['isEdit']);
             },
+
+
+          mouseoverItem(qindex){
+            this.mouseState[qindex] = 1;
+          },
+          mouseoutItem(qindex){
+            this.mouseState = [];
+          },
+
+          // 删除指定item
+          delItem(e, qindex){
+            e.preventDefault();
+            e.stopPropagation();
+            this.questionList.splice(qindex, 1);
+          },
+          // 往上移动item
+          moveItemUp(e, qindex){
+            e.preventDefault();
+            e.stopPropagation();
+            if(!qindex){
+              return;
+            }
+            let _moveItem = this.questionList[qindex];
+            this.questionList.splice(qindex-1, 0, _moveItem);
+            this.questionList.splice(qindex+1, 1);
+          },
+          // 往下移动item
+          moveItemDown(e, qindex){
+            e.preventDefault();
+            e.stopPropagation();
+            if(qindex + 1 == this.questionList.length){
+              return;
+            }
+            let _moveItem = this.questionList[qindex];
+            this.questionList.splice(qindex+2, 0, _moveItem);
+            this.questionList.splice(qindex, 1);
+          },
+
 
             //选择类型
             handleChange(value) {
@@ -381,7 +592,7 @@
 
             //上移动 下移动
             moveAnswer(moveType = 'up', qindex, index){
-                console.log(moveType, qindex, index);
+                // console.log(moveType, qindex, index);
                 let _moveItem = this.questionList[qindex]['answerJson'][index];
                 switch (moveType){
                     case 'up':
@@ -441,6 +652,11 @@
                 return;
               }
 
+              if(!this.questionList.length){
+                this.$message.error('您还未添加题目！');
+                return;
+              }
+
                 let _insertData = {
                     id: this.paperId,
                     title: this.title,
@@ -448,7 +664,8 @@
                     startTime: this.startTime,
                     endTime: this.endTime,
                     type: this.type,
-                    questionList: JSON.stringify(this.questionList)
+                    questionList: JSON.stringify(this.questionList),
+                  token: CookieUtil.get('TOKEN')
                 };
                 // console.log(_insertData);
 
@@ -548,12 +765,40 @@
                 .textarea{
                     margin: 10px 0;
                 }
+
+
+                .qc4Item{
+                    width: 100%;
+                    clear: both;
+                    display: table;
+                }
+                .name{
+                    float: left;
+                    padding-right: 20px;
+                    line-height: 50px;
+                }
+                .value{
+                    float: left;
+                }
             }
             .answer-tips,
             .answer-jiexi{
                 color: #666;
                 padding-left: 25px;
             }
+
+            .item-tools-layer{
+                padding-top: 15px;
+                height: 30px;
+                .tools-list{
+                    width: 100%;
+                    text-align: right;
+                    .tbtn{
+                       margin-right: 10px;
+                    }
+                }
+            }
+
         }
     }
 
